@@ -17,13 +17,17 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Center(child: Text('APP')),
+      home: MyWidget(child: const Center(child: Text('APP'))),
     );
   }
 }
 
 class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+  final Widget? child;
+  const MyWidget({
+    super.key,
+    this.child,
+  });
 
   @override
   State<MyWidget> createState() => _MyWidgetState();
@@ -41,6 +45,6 @@ class _MyWidgetState extends State<MyWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return widget.child ?? Container();
   }
 }

@@ -7,7 +7,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseManager {
-  static const int schemaVersion = 0;
+  static const int schemaVersion = 10;
 
   static final DatabaseManager _instance = DatabaseManager._internal();
 
