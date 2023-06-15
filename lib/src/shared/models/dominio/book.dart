@@ -3,7 +3,6 @@ class Book {
   String title;
   String subtitle;
   String publisher;
-  List<String> authors;
   String description;
 
   Book({
@@ -12,6 +11,5 @@ class Book {
     this.subtitle = '',
     this.publisher = '',
     this.description = '',
-    this.authors = const [],
   });
 }
