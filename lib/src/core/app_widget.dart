@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_books/src/core/app_controller.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget({super.key});
+  AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class AppWidget extends StatelessWidget {
         future: controller.init(),
         builder: (_, AsyncSnapshot<bool> snapshot) {
           if (snapshot.hasData) {
-            return _buildApp(context);
+            return _buildApp(context, controller);
           }
           return const Center(
             child: CircularProgressIndicator(),
@@ -26,7 +27,7 @@ class AppWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildApp(BuildContext context) {
+  Widget _buildApp(BuildContext context, AppController controller) {
     return MaterialApp.router(
       title: 'Flutter books',
       theme: ThemeData(primarySwatch: Colors.blue),
@@ -45,16 +46,22 @@ class AppWidget extends StatelessWidget {
         Locale('pt', 'BR'),
       ],
       builder: (BuildContext context, Widget? child) => Material(
-        child: _buildLocale(context, child),
+        child: _buildLocale(context, controller, child),
       ),
     );
   }
 
-  Widget _buildLocale(BuildContext context, Widget? child) {
-    return Localizations.override(
-      context: context,
-      locale: const Locale('en'),
-      child: child,
+  Widget _buildLocale(
+    BuildContext context,
+    AppController controller,
+    Widget? child,
+  ) {
+    return Observer(
+      builder: (ctx) => Localizations.override(
+        context: ctx,
+        locale: Locale(controller.lang),
+        child: child,
+      ),
     );
   }
 }
