@@ -96,7 +96,7 @@ int? boolToIntNullable(dynamic source) {
   return boolToInt(source, nullable: true);
 }
 
-String? dynamicToString(dynamic source) {
+String? dynamicToString(dynamic? source) {
   if (source != null) {
     return source.toString();
   }

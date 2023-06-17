@@ -5,6 +5,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../shared/components/app_bar/button_language.dart';
+import '../../shared/components/book/card_book.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
@@ -14,23 +15,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String localeName = AppLocalizations.of(context)!.localeName;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.title),
-        actions: [
-          ButtonLanguage('pt'),
-          ButtonLanguage('en'),
-          ButtonLanguage('es'),
-        ],
-      ),
-      body: Column(
-        children: [
-          Center(
-            child: Text(AppLocalizations.of(context)!.lang),
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.title),
+          actions: [
+            ButtonLanguage('pt'),
+            ButtonLanguage('en'),
+            ButtonLanguage('es'),
+          ],
+        ),
+        body: ListView.builder(
+          itemCount: controller.books.length,
+          itemBuilder: (context, index) => CardBook(controller.books[index]),
+        ));
   }
 }
