@@ -1,11 +1,10 @@
 import 'package:flutter_books/src/core/app_controller.dart';
 import 'package:flutter_books/src/database/database_manager.dart';
-import 'package:flutter_books/src/shared/repositories/book_repository.dart';
 import 'package:flutter_books/src/shared/services/http/api_request.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../modules/details/details_module.dart';
 import '../modules/home/home_module.dart';
-import '../modules/home/home_page.dart';
 
 class AppModule extends Module {
   @override
@@ -19,5 +18,6 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ModuleRoute('/', module: HomeModule()),
+        ModuleRoute('/details', module: DetailsModule()),
       ];
 }
