@@ -5,10 +5,16 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class BookRepository {
   final ApiRequest _apiRequest = Modular.get();
-  Future<List<Book>> findBook(String keyword) async {
+  Future<List<Book>> findBook(
+    String keyword,
+    int offset,
+    int limit,
+  ) async {
     return await _apiRequest
         .request(ApiUrl.findBooks(
       keyword,
+      offset,
+      limit,
     ))
         .then((data) {
       return Book.fromList(data['items']);

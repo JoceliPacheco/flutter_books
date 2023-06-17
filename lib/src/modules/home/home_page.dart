@@ -7,6 +7,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../shared/components/app_bar/button_language.dart';
 import '../../shared/components/book/card_book.dart';
+import '../../shared/components/simple_content/simple_content_widget.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
@@ -24,6 +25,11 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     controller.init();
+    controller.initScroll();
+  }
+
+  handleScroll() {
+    print('handleScroll');
   }
 
   @override
@@ -38,11 +44,25 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Observer(
-        builder: (context) => ListView.builder(
-          itemCount: controller.books.length,
-          itemBuilder: (context, index) => CardBook(controller.books[index]),
-        ),
+        builder: (context) {
+          return SimpleContentContainer(
+            expand: true,
+            child: _buildBody,
+            bottom: controller.loading
+                ? Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: CircularProgressIndicator(),
+                  )
+                : null,
+          );
+        },
       ),
     );
   }
+
+  Widget get _buildBody => ListView.builder(
+        controller: controller.scroll,
+        itemCount: controller.books.length,
+        itemBuilder: (context, index) => CardBook(controller.books[index]),
+      );
 }
