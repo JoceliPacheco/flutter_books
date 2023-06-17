@@ -44,6 +44,17 @@ class AppWidget extends StatelessWidget {
         Locale('es'),
         Locale('pt', 'BR'),
       ],
+      builder: (BuildContext context, Widget? child) => Material(
+        child: _buildLocale(context, child),
+      ),
+    );
+  }
+
+  Widget _buildLocale(BuildContext context, Widget? child) {
+    return Localizations.override(
+      context: context,
+      locale: const Locale('en'),
+      child: child,
     );
   }
 }
