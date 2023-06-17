@@ -25,30 +25,6 @@ mixin _$AppController on AppControllerBase, Store {
     });
   }
 
-  late final _$booksAtom =
-      Atom(name: 'AppControllerBase.books', context: context);
-
-  @override
-  List<Book> get books {
-    _$booksAtom.reportRead();
-    return super.books;
-  }
-
-  @override
-  set books(List<Book> value) {
-    _$booksAtom.reportWrite(value, super.books, () {
-      super.books = value;
-    });
-  }
-
-  late final _$getBooksAsyncAction =
-      AsyncAction('AppControllerBase.getBooks', context: context);
-
-  @override
-  Future<dynamic> getBooks() {
-    return _$getBooksAsyncAction.run(() => super.getBooks());
-  }
-
   late final _$AppControllerBaseActionController =
       ActionController(name: 'AppControllerBase', context: context);
 
@@ -66,8 +42,7 @@ mixin _$AppController on AppControllerBase, Store {
   @override
   String toString() {
     return '''
-lang: ${lang},
-books: ${books}
+lang: ${lang}
     ''';
   }
 }

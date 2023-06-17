@@ -1,18 +1,20 @@
 import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'book.g.dart';
+
 @JsonSerializable(createToJson: true)
 class Book {
-  @JsonKey(name: 'id', fromJson: dynamicToString)
+  @JsonKey(name: 'id')
   String id;
 
-  @JsonKey(name: 'title', fromJson: dynamicToString)
+  @JsonKey(name: 'title')
   String title;
 
-  @JsonKey(name: 'subtitle', fromJson: dynamicToString)
+  @JsonKey(name: 'subtitle')
   String subtitle;
 
-  @JsonKey(name: 'description', fromJson: dynamicToString)
+  @JsonKey(name: 'description')
   String description;
 
   Book({
@@ -23,13 +25,10 @@ class Book {
   });
 
   static List<Book> fromList(List<dynamic> list) {
-    return list.map((_) => Book.fromJson(_)).toList();
+    return list.map((map) => Book.fromJson(map)).toList();
   }
 
-  factory Book.fromJson(dynamic map) => Book(
-        id: map['id'].toString(),
-        title: map['title'].toString(),
-        description: map['description'].toString(),
-        subtitle: map['subtitle'].toString(),
-      );
+  Map<String, dynamic> toJson() => _$BookToJson(this);
+
+  factory Book.fromJson(Map<String, dynamic> map) => _$BookFromJson(map);
 }

@@ -10,7 +10,6 @@ class AppController = AppControllerBase with _$AppController;
 
 abstract class AppControllerBase with Store {
   DatabaseManager databaseManager = Modular.get();
-  BookRepository _bookRepository = Modular.get();
 
   @observable
   String lang = 'en';
@@ -23,20 +22,10 @@ abstract class AppControllerBase with Store {
   Future<bool> init() async {
     await _initDatabase();
 
-    await getBooks();
-
     return true;
   }
 
   Future _initDatabase() async {
     await databaseManager.database.future;
-  }
-
-  @observable
-  List<Book> books = [];
-
-  @action
-  Future getBooks() async {
-    books = await _bookRepository.findBook('a');
   }
 }

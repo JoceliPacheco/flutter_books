@@ -11,7 +11,6 @@ class BookRepository {
       keyword,
     ))
         .then((data) {
-      print(data['items']);
       return Book.fromList(data['items']);
     }).catchError(
       (onError) {
