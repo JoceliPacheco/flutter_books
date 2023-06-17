@@ -4,6 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../shared/components/app_bar/button_language.dart';
+
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
   AppController controller = Modular.get();
@@ -12,22 +14,21 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String localeName = AppLocalizations.of(context)!.localeName;
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.idioma),
+        title: Text(AppLocalizations.of(context)!.title),
+        actions: [
+          ButtonLanguage('pt'),
+          ButtonLanguage('en'),
+          ButtonLanguage('es'),
+        ],
       ),
       body: Column(
         children: [
           Center(
-            child: Text(AppLocalizations.of(context)!.idioma),
+            child: Text(AppLocalizations.of(context)!.lang),
           ),
-          Observer(builder: (context) => Text(controller.lang)),
-          TextButton(
-              onPressed: () => controller.setLang('pt'), child: Text('PT')),
-          TextButton(
-              onPressed: () => controller.setLang('en'), child: Text('EN')),
-          TextButton(
-              onPressed: () => controller.setLang('es'), child: Text('ES')),
         ],
       ),
     );

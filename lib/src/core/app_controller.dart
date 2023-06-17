@@ -14,7 +14,6 @@ abstract class AppControllerBase with Store {
 
   @action
   setLang(String newLanguage) {
-    print(newLanguage);
     lang = newLanguage;
   }
 
