@@ -39,15 +39,18 @@ dependencies:
   sqflite: ^2.2.8+4
   path_provider: ^2.0.15
   flutter_modular: ^5.0.3
-  intl: ^0.18.1
+  intl: any
   mobx: ^2.2.0
   flutter_mobx: ^2.0.6+5
   mobx_codegen: ^2.3.0
   json_annotation: ^4.8.1
+  flutter_localization: ^0.1.12
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+   
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -67,6 +70,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  generate: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:
