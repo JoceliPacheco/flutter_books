@@ -23,7 +23,9 @@ class Favorite {
   @JsonKey(name: 'publisher')
   String publisher;
 
-  @JsonKey(name: 'imageLinks', fromJson: parseImage)
+  @JsonKey(
+    name: 'image',
+  )
   String image;
 
   Favorite({

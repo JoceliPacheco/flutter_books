@@ -12,7 +12,7 @@ class FavoriteRepository {
 
     var db = await database.database.future;
     await db.insert(
-      'book',
+      'favorite',
       BookToFavorite.transform(book).toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );

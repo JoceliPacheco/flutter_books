@@ -6,6 +6,10 @@ class BookToFavorite {
     return Favorite(
       id: book.id,
       title: book.volumeInfo.title,
+      description: book.volumeInfo.description,
+      subtitle: book.volumeInfo.subtitle,
+      publisher: book.volumeInfo.publisher,
+      image: book.volumeInfo.image,
     );
   }
 }

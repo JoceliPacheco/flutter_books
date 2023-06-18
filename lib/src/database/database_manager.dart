@@ -1,20 +1,20 @@
 import 'dart:async';
 
-import 'package:flutter_books/src/database/tables/book_table.dart';
+import 'package:flutter_books/src/database/tables/favorite_table.dart';
 import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseManager {
-  static const int schemaVersion = 10;
+  static const int schemaVersion = 11;
 
   static final DatabaseManager _instance = DatabaseManager._internal();
 
   factory DatabaseManager() => _instance;
 
   List<BaseTable> tables = [
-    BookTable(),
+    FavoriteTable(),
   ];
 
   Completer<Database> database = Completer<Database>();

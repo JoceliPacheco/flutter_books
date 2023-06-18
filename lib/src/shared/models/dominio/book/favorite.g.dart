@@ -12,7 +12,7 @@ Favorite _$FavoriteFromJson(Map<String, dynamic> json) => Favorite(
       subtitle: json['subtitle'] as String? ?? '',
       description: json['description'] as String? ?? '',
       publisher: json['publisher'] as String? ?? '',
-      image: json['imageLinks'] == null ? '' : parseImage(json['imageLinks']),
+      image: json['image'] as String? ?? '',
     );
 
 Map<String, dynamic> _$FavoriteToJson(Favorite instance) => <String, dynamic>{
@@ -21,5 +21,5 @@ Map<String, dynamic> _$FavoriteToJson(Favorite instance) => <String, dynamic>{
       'subtitle': instance.subtitle,
       'description': instance.description,
       'publisher': instance.publisher,
-      'imageLinks': instance.image,
+      'image': instance.image,
     };

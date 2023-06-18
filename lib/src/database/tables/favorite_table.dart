@@ -1,8 +1,8 @@
 import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:flutter_books/src/shared/models/dominio/table/column_type.dart';
 
-class BookTable extends BaseTable {
-  String tableName = 'book';
+class FavoriteTable extends BaseTable {
+  String tableName = 'favorite';
 
   Map<String, String> columns = {
     'id': ColumnType.Text,
@@ -10,13 +10,14 @@ class BookTable extends BaseTable {
     'subtitle': ColumnType.Text,
     'publisher': ColumnType.Text,
     'description': ColumnType.Text,
+    'image': ColumnType.Text,
   };
 
   List<String> primaryKey = ['id'];
 
   Map<String, dynamic> indexes = {};
 
-  static final BookTable instance = BookTable._();
-  factory BookTable() => instance;
-  BookTable._();
+  static final FavoriteTable instance = FavoriteTable._();
+  factory FavoriteTable() => instance;
+  FavoriteTable._();
 }
