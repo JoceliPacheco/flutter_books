@@ -102,3 +102,10 @@ String? dynamicToString(dynamic? source) {
   }
   return '';
 }
+
+String parseImage(map) {
+  if (map['thumbnail'] != null) {
+    return map['thumbnail'].toString();
+  }
+  return '';
+}

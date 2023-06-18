@@ -1,10 +1,16 @@
 import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'volume_info.g.dart';
+import 'sale_info.dart';
+import 'volume_info.dart';
+
+part 'favorite.g.dart';
 
 @JsonSerializable(createToJson: true)
-class VolumeInfo {
+class Favorite {
+  @JsonKey(name: 'id')
+  String id;
+
   @JsonKey(name: 'title')
   String title;
 
@@ -20,7 +26,8 @@ class VolumeInfo {
   @JsonKey(name: 'imageLinks', fromJson: parseImage)
   String image;
 
-  VolumeInfo({
+  Favorite({
+    required this.id,
     this.title = '',
     this.subtitle = '',
     this.description = '',
@@ -28,12 +35,12 @@ class VolumeInfo {
     this.image = '',
   });
 
-  static List<VolumeInfo> fromList(List<dynamic> list) {
-    return list.map((map) => VolumeInfo.fromJson(map)).toList();
+  static List<Favorite> fromList(List<dynamic> list) {
+    return list.map((map) => Favorite.fromJson(map)).toList();
   }
 
-  Map<String, dynamic> toJson() => _$VolumeInfoToJson(this);
+  Map<String, dynamic> toJson() => _$FavoriteToJson(this);
 
-  factory VolumeInfo.fromJson(Map<String, dynamic> map) =>
-      _$VolumeInfoFromJson(map);
+  factory Favorite.fromJson(Map<String, dynamic> map) =>
+      _$FavoriteFromJson(map);
 }
