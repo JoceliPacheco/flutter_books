@@ -17,10 +17,13 @@ class Book {
   @JsonKey(name: 'saleInfo')
   SaleInfo? saleInfo;
 
+  bool isFavorite = false;
+
   Book({
     required this.id,
     required this.volumeInfo,
     this.saleInfo,
+    this.isFavorite = true,
   });
 
   static List<Book> fromList(List<dynamic> list) {

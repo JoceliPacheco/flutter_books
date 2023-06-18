@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_books/src/core/app_controller.dart';
 import 'package:flutter_books/src/modules/home/home_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeController controller = Modular.get();
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   void initState() {
@@ -26,10 +28,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     controller.init();
     controller.initScroll();
-  }
-
-  handleScroll() {
-    print('handleScroll');
   }
 
   @override
@@ -51,6 +49,13 @@ class _HomePageState extends State<HomePage> {
         builder: (context) {
           return SimpleContentContainer(
             expand: true,
+            head: TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: AppLocalizations.of(context)!.labelSearch,
+              ),
+              onSubmitted: (value) => controller.search(value),
+            ),
             child: _buildBody,
             bottom: controller.loading
                 ? Padding(

@@ -1,5 +1,6 @@
 import 'package:flutter_books/src/modules/details/details_controller.dart';
 import 'package:flutter_books/src/shared/repositories/favorite_repository.dart';
+import 'package:flutter_books/src/shared/services/favorites/is_favorite_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../shared/repositories/book_repository.dart';
@@ -11,6 +12,7 @@ class DetailsModule extends Module {
         Bind((i) => DetailsController()),
         Bind((i) => BookRepository()),
         Bind((i) => FavoriteRepository()),
+        Bind((i) => IsFavoriteService()),
       ];
 
   @override

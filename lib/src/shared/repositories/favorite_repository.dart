@@ -8,7 +8,7 @@ import '../transformers/book_to_favorite.dart';
 
 class FavoriteRepository {
   DatabaseManager database = Modular.get();
-  Future<bool> adicionar(Book book) async {
+  Future<bool> add(Book book) async {
     var db = await database.database.future;
     await db.insert(
       'favorite',
@@ -18,8 +18,22 @@ class FavoriteRepository {
     return true;
   }
 
+  Future<int> rm(String id) async {
+    final db = await database.database.future;
+    return db.delete('favorite', where: 'id = ?', whereArgs: [id]);
+  }
+
   Future<List<Favorite>> getFavorites() async {
     var db = await database.database.future;
     return db.query('favorite').then((_) => Favorite.fromList(_));
+  }
+
+  Future<List<Favorite>> getFavorite(String id) async {
+    var db = await database.database.future;
+    return db.query(
+      'favorite',
+      where: 'id = ?',
+      whereArgs: [id],
+    ).then((_) => Favorite.fromList(_));
   }
 }

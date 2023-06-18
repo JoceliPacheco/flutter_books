@@ -1,4 +1,9 @@
 {
-    "title": "FLutter libros",
-   "lang": "Español"
+    "title":        "FLutter libros",
+    "details":      "Detalles",
+    "favorites":    "Favoritos",
+    "labelSearch":  "Palabra clave",
+    "add":          "Agregar a los favoritos",
+    "rm":           "Quitar de favoritos",
+    "lang":         "Espanol"
 }

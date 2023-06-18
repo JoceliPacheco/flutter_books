@@ -22,6 +22,9 @@ abstract class HomeControllerBase with Store {
   int limit = 20;
   double tolerancia = 50;
 
+  @observable
+  String keyword = '';
+
   initScroll() {
     scroll = ScrollController();
     scroll.addListener(handleScroll);
@@ -45,15 +48,27 @@ abstract class HomeControllerBase with Store {
 
   @action
   Future getBooks() async {
+    if (this.keyword.isEmpty) {
+      return;
+    }
+
     loading = true;
 
     List<Book> _lista = books;
 
-    _lista.addAll(await _bookRepository.findBook('a', offset, limit));
+    _lista.addAll(await _bookRepository.findBook(this.keyword, offset, limit));
     books = _lista;
     print(_lista.length);
 
     loading = false;
     offset += limit;
+  }
+
+  search(String text) {
+    this.keyword = text;
+    books = [];
+    offset = 0;
+
+    this.getBooks();
   }
 }

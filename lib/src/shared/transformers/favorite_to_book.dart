@@ -6,13 +6,14 @@ import '../models/dominio/book/favorite.dart';
 class FavoriteToBook {
   static Book transform(Favorite favorite) {
     return Book(
-        id: favorite.id,
-        volumeInfo: VolumeInfo(
-          title: favorite.title,
-          description: favorite.description,
-          subtitle: favorite.subtitle,
-          publisher: favorite.publisher,
-          image: favorite.image,
-        ));
+      id: favorite.id,
+      volumeInfo: VolumeInfo(
+        title: favorite.title,
+        description: favorite.description,
+        subtitle: favorite.subtitle,
+        publisher: favorite.publisher,
+        image: favorite.image,
+      ),
+    );
   }
 }

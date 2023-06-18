@@ -41,6 +41,22 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  late final _$keywordAtom =
+      Atom(name: 'HomeControllerBase.keyword', context: context);
+
+  @override
+  String get keyword {
+    _$keywordAtom.reportRead();
+    return super.keyword;
+  }
+
+  @override
+  set keyword(String value) {
+    _$keywordAtom.reportWrite(value, super.keyword, () {
+      super.keyword = value;
+    });
+  }
+
   late final _$booksAtom =
       Atom(name: 'HomeControllerBase.books', context: context);
 
@@ -70,6 +86,7 @@ mixin _$HomeController on HomeControllerBase, Store {
     return '''
 loading: ${loading},
 offset: ${offset},
+keyword: ${keyword},
 books: ${books}
     ''';
   }

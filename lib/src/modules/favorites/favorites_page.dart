@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_books/src/modules/favorites/favorites_controller.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/components/book/card_book.dart';
 import '../../shared/transformers/book_to_favorite.dart';
@@ -29,7 +30,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: Text(AppLocalizations.of(context)!.favorites),
       ),
       body: _buildBody(),
     );
