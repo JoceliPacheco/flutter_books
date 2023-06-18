@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
           return SimpleContentContainer(
             expand: true,
             head: TextField(
+              textInputAction: TextInputAction.search,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: AppLocalizations.of(context)!.labelSearch,
