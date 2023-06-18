@@ -19,7 +19,7 @@ abstract class HomeControllerBase with Store {
   @observable
   int offset = 0;
 
-  int limit = 40;
+  int limit = 20;
   double tolerancia = 50;
 
   initScroll() {
