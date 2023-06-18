@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../database/database_manager.dart';
-import '../shared/models/dominio/book.dart';
+
 part 'app_controller.g.dart';
 
 class AppController = AppControllerBase with _$AppController;

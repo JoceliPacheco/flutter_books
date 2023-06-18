@@ -1,4 +1,4 @@
-import 'package:flutter_books/src/shared/models/dominio/column_type.dart';
+import 'package:flutter_books/src/shared/models/dominio/table/column_type.dart';
 
 abstract class BaseTable<T> {
   String tableName = '';

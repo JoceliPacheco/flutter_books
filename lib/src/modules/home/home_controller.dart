@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../shared/models/dominio/book.dart';
+import '../../shared/models/dominio/book/book.dart';
 import '../../shared/repositories/book_repository.dart';
 part 'home_controller.g.dart';
 

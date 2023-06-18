@@ -1,7 +1,8 @@
 import 'package:flutter_books/src/config/api_url.dart';
-import 'package:flutter_books/src/shared/models/dominio/book.dart';
 import 'package:flutter_books/src/shared/services/http/api_request.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../models/dominio/book/book.dart';
 
 class BookRepository {
   final ApiRequest _apiRequest = Modular.get();

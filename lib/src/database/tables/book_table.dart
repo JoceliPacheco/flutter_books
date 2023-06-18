@@ -1,5 +1,5 @@
-import 'package:flutter_books/src/shared/models/dominio/base_table.dart';
-import 'package:flutter_books/src/shared/models/dominio/column_type.dart';
+import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
+import 'package:flutter_books/src/shared/models/dominio/table/column_type.dart';
 
 class BookTable extends BaseTable {
   String tableName = 'book';

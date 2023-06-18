@@ -45,6 +45,7 @@ dependencies:
   mobx_codegen: ^2.3.0
   json_annotation: ^4.8.1
   flutter_localization: ^0.1.12
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:

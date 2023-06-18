@@ -1,6 +1,9 @@
 import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'sale_info.dart';
+import 'volume_info.dart';
+
 part 'book.g.dart';
 
 @JsonSerializable(createToJson: true)
@@ -8,20 +11,16 @@ class Book {
   @JsonKey(name: 'id')
   String id;
 
-  @JsonKey(name: 'title')
-  String title;
+  @JsonKey(name: 'volumeInfo')
+  VolumeInfo volumeInfo;
 
-  @JsonKey(name: 'subtitle')
-  String subtitle;
-
-  @JsonKey(name: 'description')
-  String description;
+  @JsonKey(name: 'saleInfo')
+  SaleInfo? saleInfo;
 
   Book({
     required this.id,
-    this.title = '',
-    this.subtitle = '',
-    this.description = '',
+    required this.volumeInfo,
+    this.saleInfo,
   });
 
   static List<Book> fromList(List<dynamic> list) {

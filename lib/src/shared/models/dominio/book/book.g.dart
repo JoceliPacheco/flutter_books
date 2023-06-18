@@ -8,14 +8,15 @@ part of 'book.dart';
 
 Book _$BookFromJson(Map<String, dynamic> json) => Book(
       id: json['id'] as String,
-      title: json['title'] as String? ?? '',
-      subtitle: json['subtitle'] as String? ?? '',
-      description: json['description'] as String? ?? '',
+      volumeInfo:
+          VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
+      saleInfo: json['saleInfo'] == null
+          ? null
+          : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BookToJson(Book instance) => <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'subtitle': instance.subtitle,
-      'description': instance.description,
+      'volumeInfo': instance.volumeInfo,
+      'saleInfo': instance.saleInfo,
     };

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_books/src/database/tables/book_table.dart';
 import 'package:flutter_books/src/helpers/transformers.dart';
-import 'package:flutter_books/src/shared/models/dominio/base_table.dart';
+import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

@@ -11,6 +11,9 @@ class DetailsModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => DetailsPage()),
+        ChildRoute('/',
+            child: (context, args) => DetailsPage(
+                  book: args.data['book'],
+                )),
       ];
 }
