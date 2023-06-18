@@ -15,17 +15,22 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Center(
-        child: Column(
-          children: [
-            Text(book.volumeInfo.title),
-            TextButton(
-              onPressed: () => controller.add(book),
-              child: Text('Add'),
-            )
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detalhes'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: Column(
+            children: [
+              Text(book.volumeInfo.title),
+              TextButton(
+                onPressed: () => controller.add(book),
+                child: Text('Add'),
+              )
+            ],
+          ),
         ),
       ),
     );

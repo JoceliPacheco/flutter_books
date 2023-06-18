@@ -5,6 +5,7 @@ import 'package:flutter_books/src/shared/services/http/api_request.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../modules/details/details_module.dart';
+import '../modules/favorites/favorites_module.dart';
 import '../modules/home/home_module.dart';
 
 class AppModule extends Module {
@@ -23,5 +24,6 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ModuleRoute('/', module: HomeModule()),
         ModuleRoute('/details', module: DetailsModule()),
+        ModuleRoute('/favorites', module: FavoritesModule()),
       ];
 }

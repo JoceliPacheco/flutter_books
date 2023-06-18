@@ -41,6 +41,10 @@ class _HomePageState extends State<HomePage> {
           ButtonLanguage('pt'),
           ButtonLanguage('en'),
           ButtonLanguage('es'),
+          IconButton(
+            onPressed: () => Modular.to.pushNamed('/favorites'),
+            icon: Icon(Icons.favorite),
+          )
         ],
       ),
       body: Observer(
