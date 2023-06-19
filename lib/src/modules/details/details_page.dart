@@ -64,7 +64,10 @@ class _DetailsPageState extends State<DetailsPage> {
             imageBookWidget,
             Text(
               widget.book.title,
-              style: const TextStyle(color: Colors.blueGrey),
+              style: const TextStyle(
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Text(
               widget.book.subtitle,
@@ -72,7 +75,7 @@ class _DetailsPageState extends State<DetailsPage> {
             ),
             descriptionWidget,
             Container(
-              height: 70,
+              height: 100,
             )
           ],
         ),
@@ -89,10 +92,13 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
       );
 
-  Widget get descriptionWidget => Text(
-        widget.book.description,
-        textAlign: TextAlign.justify,
-        style: const TextStyle(fontSize: 12),
+  Widget get descriptionWidget => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        child: Text(
+          widget.book.description,
+          textAlign: TextAlign.justify,
+          style: const TextStyle(fontSize: 12),
+        ),
       );
 
   Widget? get buttonBuyWidget => widget.book.buyLink.isNotEmpty
