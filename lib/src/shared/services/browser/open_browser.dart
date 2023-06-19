@@ -1,3 +1,4 @@
+import 'package:flutter_books/src/shared/services/alerts/toast_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OpenBrowser {
@@ -6,7 +7,7 @@ class OpenBrowser {
       Uri.parse(url),
       mode: LaunchMode.externalApplication,
     )) {
-      throw Exception('Could not launch $url');
+      ToastService.show('Could not launch $url');
     }
   }
 }

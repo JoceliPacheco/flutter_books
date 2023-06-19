@@ -1,5 +1,6 @@
 import 'package:flutter_books/src/core/app_controller.dart';
 import 'package:flutter_books/src/database/database_manager.dart';
+import 'package:flutter_books/src/shared/services/alerts/toast_service.dart';
 import 'package:flutter_books/src/shared/services/browser/open_browser.dart';
 import 'package:flutter_books/src/shared/services/http/api_request.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -18,6 +19,7 @@ class AppModule extends Module {
 
         //
         Bind((i) => OpenBrowser()),
+        Bind((i) => ToastService()),
       ];
 
   @override

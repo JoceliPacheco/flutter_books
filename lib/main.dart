@@ -3,7 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:flutter_books/src/core/app_module.dart';
 import 'package:flutter_books/src/core/app_widget.dart';
-import 'package:flutter_books/src/database/database_manager.dart';
 
 void main() {
   runApp(ModularApp(module: AppModule(), child: AppWidget()));

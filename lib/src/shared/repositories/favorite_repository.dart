@@ -1,18 +1,18 @@
-import 'package:flutter_books/src/shared/models/dominio/book/book.dart';
-import 'package:flutter_books/src/shared/models/dominio/book/favorite.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../database/database_manager.dart';
-import '../transformers/book_to_favorite.dart';
+import '../models/dominio/book/simple_book.dart';
+import '../models/http/book_api/book_api.dart';
+import '../transformers/book_to_simple_book.dart';
 
 class FavoriteRepository {
   DatabaseManager database = Modular.get();
-  Future<bool> add(Book book) async {
+  Future<bool> add(SimpleBook book) async {
     var db = await database.database.future;
     await db.insert(
       'favorite',
-      BookToFavorite.transform(book).toJson(),
+      book.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
     return true;
@@ -23,17 +23,17 @@ class FavoriteRepository {
     return db.delete('favorite', where: 'id = ?', whereArgs: [id]);
   }
 
-  Future<List<Favorite>> getFavorites() async {
+  Future<List<SimpleBook>> getFavorites() async {
     var db = await database.database.future;
-    return db.query('favorite').then((_) => Favorite.fromList(_));
+    return db.query('favorite').then((_) => SimpleBook.fromList(_));
   }
 
-  Future<List<Favorite>> getFavorite(String id) async {
+  Future<List<SimpleBook>> getFavorite(String id) async {
     var db = await database.database.future;
     return db.query(
       'favorite',
       where: 'id = ?',
       whereArgs: [id],
-    ).then((_) => Favorite.fromList(_));
+    ).then((_) => SimpleBook.fromList(_));
   }
 }

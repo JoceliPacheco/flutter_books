@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_books/src/modules/details/details_controller.dart';
+import 'package:flutter_books/src/shared/models/dominio/book/simple_book.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../shared/models/dominio/book/book.dart';
+import '../../shared/models/http/book_api/book_api.dart';
 
 class DetailsPage extends StatefulWidget {
-  final Book book;
+  final SimpleBook book;
   DetailsPage({
     required this.book,
     super.key,
@@ -38,7 +39,7 @@ class _DetailsPageState extends State<DetailsPage> {
         child: Center(
           child: Column(
             children: [
-              Text(widget.book.volumeInfo.title),
+              Text(widget.book.title),
               TextButton(
                 onPressed: () => controller.add(widget.book),
                 child: Observer(

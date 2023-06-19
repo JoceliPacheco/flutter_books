@@ -1,12 +1,15 @@
+import 'dart:math';
+
 import 'package:flutter_books/src/config/api_url.dart';
 import 'package:flutter_books/src/shared/services/http/api_request.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../models/dominio/book/book.dart';
+import '../../helpers/exception.dart';
+import '../models/http/book_api/book_api.dart';
 
 class BookRepository {
   final ApiRequest _apiRequest = Modular.get();
-  Future<List<Book>> findBook(
+  Future<List<BookApi>> findBook(
     String keyword,
     int offset,
     int limit,
@@ -18,10 +21,10 @@ class BookRepository {
       limit,
     ))
         .then((data) {
-      return Book.fromList(data['items']);
+      return BookApi.fromList(data['items']);
     }).catchError(
-      (onError) {
-        print(onError);
+      (e) {
+        throw new Exception(getMessage(e));
       },
     );
   }

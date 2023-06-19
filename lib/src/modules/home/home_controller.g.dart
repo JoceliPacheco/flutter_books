@@ -61,13 +61,13 @@ mixin _$HomeController on HomeControllerBase, Store {
       Atom(name: 'HomeControllerBase.books', context: context);
 
   @override
-  List<Book> get books {
+  List<SimpleBook> get books {
     _$booksAtom.reportRead();
     return super.books;
   }
 
   @override
-  set books(List<Book> value) {
+  set books(List<SimpleBook> value) {
     _$booksAtom.reportWrite(value, super.books, () {
       super.books = value;
     });

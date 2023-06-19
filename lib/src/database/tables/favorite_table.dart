@@ -11,6 +11,7 @@ class FavoriteTable extends BaseTable {
     'publisher': ColumnType.Text,
     'description': ColumnType.Text,
     'image': ColumnType.Text,
+    'buy': ColumnType.Text,
   };
 
   List<String> primaryKey = ['id'];

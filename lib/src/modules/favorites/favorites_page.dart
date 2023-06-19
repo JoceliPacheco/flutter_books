@@ -6,8 +6,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../shared/components/book/card_book.dart';
-import '../../shared/transformers/book_to_favorite.dart';
-import '../../shared/transformers/favorite_to_book.dart';
 
 class FavoritesPage extends StatefulWidget {
   FavoritesPage({super.key});
@@ -42,7 +40,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
         return ListView.builder(
           itemCount: controller.favorites.length,
           itemBuilder: (context, index) => CardBook(
-            FavoriteToBook.transform(controller.favorites[index]),
+            controller.favorites[index],
           ),
         );
       },

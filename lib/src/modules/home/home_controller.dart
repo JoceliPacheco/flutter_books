@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_books/src/shared/models/dominio/book/simple_book.dart';
+import 'package:flutter_books/src/shared/services/books/find_book_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../shared/models/dominio/book/book.dart';
+import '../../shared/models/http/book_api/book_api.dart';
 import '../../shared/repositories/book_repository.dart';
 part 'home_controller.g.dart';
 
@@ -10,6 +12,7 @@ class HomeController = HomeControllerBase with _$HomeController;
 
 abstract class HomeControllerBase with Store {
   final BookRepository _bookRepository = Modular.get();
+  final FindBookService _findBookService = Modular.get();
 
   late ScrollController scroll;
 
@@ -40,7 +43,7 @@ abstract class HomeControllerBase with Store {
   }
 
   @observable
-  List<Book> books = [];
+  List<SimpleBook> books = [];
 
   init() {
     getBooks();
@@ -54,11 +57,12 @@ abstract class HomeControllerBase with Store {
 
     loading = true;
 
-    List<Book> _lista = books;
-
-    _lista.addAll(await _bookRepository.findBook(this.keyword, offset, limit));
-    books = _lista;
-    print(_lista.length);
+    books = await _findBookService.find(
+      keyword: keyword,
+      limit: limit,
+      offset: offset,
+      currentList: books,
+    );
 
     loading = false;
     offset += limit;

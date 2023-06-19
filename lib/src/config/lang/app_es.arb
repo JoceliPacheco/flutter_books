@@ -1,9 +1,10 @@
 {
-    "title":        "FLutter libros",
-    "details":      "Detalles",
-    "favorites":    "Favoritos",
-    "labelSearch":  "Palabra clave",
-    "add":          "Agregar a los favoritos",
-    "rm":           "Quitar de favoritos",
-    "lang":         "Espanol"
+    "title":                "FLutter libros",
+    "details":              "Detalles",
+    "favorites":            "Favoritos",
+    "labelSearch":          "Palabra clave",
+    "add":                  "Agregar a los favoritos",
+    "rm":                   "Quitar de favoritos",
+    "withoutConnection":    "comprueba tu conexión",
+    "lang":                 "Espanol"
 }

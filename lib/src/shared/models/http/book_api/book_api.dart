@@ -1,13 +1,12 @@
-import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'sale_info.dart';
 import 'volume_info.dart';
 
-part 'book.g.dart';
+part 'book_api.g.dart';
 
 @JsonSerializable(createToJson: true)
-class Book {
+class BookApi {
   @JsonKey(name: 'id')
   String id;
 
@@ -19,18 +18,18 @@ class Book {
 
   bool isFavorite = false;
 
-  Book({
+  BookApi({
     required this.id,
     required this.volumeInfo,
     this.saleInfo,
-    this.isFavorite = true,
+    this.isFavorite = false,
   });
 
-  static List<Book> fromList(List<dynamic> list) {
-    return list.map((map) => Book.fromJson(map)).toList();
+  static List<BookApi> fromList(List<dynamic> list) {
+    return list.map((map) => BookApi.fromJson(map)).toList();
   }
 
-  Map<String, dynamic> toJson() => _$BookToJson(this);
+  Map<String, dynamic> toJson() => _$BookApiToJson(this);
 
-  factory Book.fromJson(Map<String, dynamic> map) => _$BookFromJson(map);
+  factory BookApi.fromJson(Map<String, dynamic> map) => _$BookApiFromJson(map);
 }

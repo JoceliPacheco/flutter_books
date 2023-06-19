@@ -13,13 +13,13 @@ mixin _$FavoritesController on FavoritesControllerBase, Store {
       Atom(name: 'FavoritesControllerBase.favorites', context: context);
 
   @override
-  List<Favorite> get favorites {
+  List<SimpleBook> get favorites {
     _$favoritesAtom.reportRead();
     return super.favorites;
   }
 
   @override
-  set favorites(List<Favorite> value) {
+  set favorites(List<SimpleBook> value) {
     _$favoritesAtom.reportWrite(value, super.favorites, () {
       super.favorites = value;
     });

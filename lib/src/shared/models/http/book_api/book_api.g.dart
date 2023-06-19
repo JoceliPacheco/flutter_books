@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'book.dart';
+part of 'book_api.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Book _$BookFromJson(Map<String, dynamic> json) => Book(
+BookApi _$BookApiFromJson(Map<String, dynamic> json) => BookApi(
       id: json['id'] as String,
       volumeInfo:
           VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
       saleInfo: json['saleInfo'] == null
           ? null
           : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
-      isFavorite: json['isFavorite'] as bool? ?? true,
+      isFavorite: json['isFavorite'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$BookToJson(Book instance) => <String, dynamic>{
+Map<String, dynamic> _$BookApiToJson(BookApi instance) => <String, dynamic>{
       'id': instance.id,
       'volumeInfo': instance.volumeInfo,
       'saleInfo': instance.saleInfo,
