@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_books/src/modules/favorites/favorites_controller.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -9,7 +8,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../shared/components/book/card_book.dart';
 
 class FavoritesPage extends StatefulWidget {
-  FavoritesPage({super.key});
+  const FavoritesPage({super.key});
 
   @override
   State<FavoritesPage> createState() => _FavoritesPageState();
@@ -39,9 +38,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return Observer(
       builder: (context) {
         if (controller.favorites.isEmpty) {
-          return EmptyWidget();
+          return const EmptyWidget();
         }
-        return Container(
+        return SizedBox(
           width: double.infinity,
           child: ListView.builder(
             itemCount: controller.favorites.length,
@@ -73,13 +72,13 @@ class EmptyWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
+            const Icon(
               FontAwesomeIcons.heartBroken,
               color: Colors.grey,
             ),
             Text(
               AppLocalizations.of(context)!.noFavorites,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.grey,
               ),
             ),

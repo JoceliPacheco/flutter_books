@@ -7,9 +7,9 @@ class ListBookToListSimpleBook {
   static List<SimpleBook> transform(List<BookApi> books) {
     List<SimpleBook> result = [];
 
-    books.forEach((book) {
+    for (var book in books) {
       result.add(BookToSimpleBook.transform(book));
-    });
+    }
 
     return result;
   }

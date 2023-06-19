@@ -32,15 +32,15 @@ class DatabaseManager {
   Future<Database> _initDatabase() async {
     return openDatabase(
       join(await getDatabasesPath(), 'books.db'),
-      onCreate: this._onCreate,
-      onUpgrade: this._onUpgrade,
-      onDowngrade: this._onUpgrade,
+      onCreate: _onCreate,
+      onUpgrade: _onUpgrade,
+      onDowngrade: _onUpgrade,
       version: schemaVersion,
     );
   }
 
   _onCreate(Database db, version) async {
-    await this._onUpgrade(db, version, version);
+    await _onUpgrade(db, version, version);
   }
 
   _onUpgrade(Database db, fromVersion, toVersion) async {
@@ -61,7 +61,7 @@ class DatabaseManager {
     // Verifica por tabelas que precisam ser criadas
     for (BaseTable table in tables) {
       // Tabela não existe, criar ela
-      if (createdTables.indexOf(table.tableName) < 0) {
+      if (!createdTables.contains(table.tableName)) {
         await db.rawQuery(table.createTableQuery());
       }
       tablesCreated.add(table.tableName);
@@ -70,7 +70,7 @@ class DatabaseManager {
     // Dropa tabelas que não são mais usadas
     for (String tableName in createdTables) {
       // Tabela não é mais utilizada, dropar ela
-      if (tablesCreated.indexOf(tableName) < 0) {
+      if (!tablesCreated.contains(tableName)) {
         await db.rawQuery("DROP TABLE IF EXISTS $tableName");
       }
     }
@@ -99,7 +99,7 @@ class DatabaseManager {
   _ajustaCriacaoIndices(Database db, fromVersion, toVersion) async {
     for (BaseTable table in tables) {
       try {
-        if (table.indexes.length > 0) {
+        if (table.indexes.isNotEmpty) {
           // Dropa indexes
           table.indexes.forEach((String index, dynamic columns) async {
             await db.rawQuery("DROP INDEX IF EXISTS $index");
@@ -127,7 +127,7 @@ class DatabaseManager {
         var pks =
             columns.where((element) => dynamicToInt(element['pk']) > 0).length;
 
-        List _pks = columns
+        List pks0 = columns
             .where((element) => dynamicToInt(element['pk']) > 0)
             .toList();
 
@@ -139,11 +139,11 @@ class DatabaseManager {
         }
 
         /// Tabela mudou pks
-        _pks.forEach((item) {
-          if (table.primaryKey.where((i) => i == item['name']).length <= 0) {
+        for (var item in pks0) {
+          if (table.primaryKey.where((i) => i == item['name']).isEmpty) {
             need = true;
           }
-        });
+        }
 
         if (need) {
           print('Recriando tabela ${table.tableName} por mudanças de PKs');
@@ -180,13 +180,13 @@ class DatabaseManager {
 
   /// Obtém listagem de todas as colunas de uma tabela
   Future<Map<String, String>> _getColumns(Database db, tableName) async {
-    List _columns = await db.rawQuery('PRAGMA table_info($tableName)');
+    List columns0 = await db.rawQuery('PRAGMA table_info($tableName)');
     Map<String, String> columns = {};
 
-    _columns.forEach(
-      (column) => columns
-          .addAll({column['name'].toString(): column['type'].toString()}),
-    );
+    for (var column in columns0) {
+      columns
+          .addAll({column['name'].toString(): column['type'].toString()});
+    }
 
     return columns;
   }

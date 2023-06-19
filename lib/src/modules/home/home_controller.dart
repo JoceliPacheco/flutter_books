@@ -4,7 +4,6 @@ import 'package:flutter_books/src/shared/services/books/find_book_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../shared/models/http/book_api/book_api.dart';
 import '../../shared/repositories/book_repository.dart';
 part 'home_controller.g.dart';
 
@@ -51,7 +50,7 @@ abstract class HomeControllerBase with Store {
 
   @action
   Future getBooks() async {
-    if (this.keyword.isEmpty) {
+    if (keyword.isEmpty) {
       return;
     }
 
@@ -69,10 +68,10 @@ abstract class HomeControllerBase with Store {
   }
 
   search(String text) {
-    this.keyword = text;
+    keyword = text;
     books = [];
     offset = 0;
 
-    this.getBooks();
+    getBooks();
   }
 }

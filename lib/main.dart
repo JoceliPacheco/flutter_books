@@ -5,5 +5,5 @@ import 'package:flutter_books/src/core/app_module.dart';
 import 'package:flutter_books/src/core/app_widget.dart';
 
 void main() {
-  runApp(ModularApp(module: AppModule(), child: AppWidget()));
+  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }

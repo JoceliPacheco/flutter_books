@@ -36,13 +36,13 @@ class FindBookService {
   Future<List<SimpleBook>> resolveBookFavorites(List<SimpleBook> list) async {
     List<SimpleBook> favorites = await _favoriteRepository.getFavorites();
 
-    list.forEach((item) {
+    for (var item in list) {
       List<SimpleBook> result =
           favorites.where((fav) => fav.id == item.id).toList();
       if (result.isNotEmpty) {
         item.isFavorite = true;
       }
-    });
+    }
 
     return list;
   }

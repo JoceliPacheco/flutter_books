@@ -3,8 +3,6 @@ import 'package:sqflite/sqflite.dart';
 
 import '../../database/database_manager.dart';
 import '../models/dominio/book/simple_book.dart';
-import '../models/http/book_api/book_api.dart';
-import '../transformers/book_to_simple_book.dart';
 
 class FavoriteRepository {
   DatabaseManager database = Modular.get();

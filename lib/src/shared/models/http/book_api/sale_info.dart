@@ -1,4 +1,3 @@
-import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'sale_info.g.dart';

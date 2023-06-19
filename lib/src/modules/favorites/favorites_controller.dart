@@ -8,7 +8,7 @@ part 'favorites_controller.g.dart';
 class FavoritesController = FavoritesControllerBase with _$FavoritesController;
 
 abstract class FavoritesControllerBase with Store {
-  FavoriteRepository _favoriteRepository = Modular.get();
+  final FavoriteRepository _favoriteRepository = Modular.get();
 
   @observable
   List<SimpleBook> favorites = [];

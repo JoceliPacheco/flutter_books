@@ -26,23 +26,23 @@ class SimpleContentContainer extends StatelessWidget {
   }
 
   Widget _buildHead() {
-    if (this.head != null) {
-      return this.head ?? Container();
+    if (head != null) {
+      return head ?? Container();
     }
     return Container();
   }
 
   Widget _buildBody() {
-    if (this.expand) {
-      return Expanded(child: this.child ?? Container());
+    if (expand) {
+      return Expanded(child: child ?? Container());
     }
 
-    return this.child ?? Container();
+    return child ?? Container();
   }
 
   Widget _buildBottom() {
-    if (this.bottom != null) {
-      return this.bottom ?? Container();
+    if (bottom != null) {
+      return bottom ?? Container();
     }
     return Container();
   }

@@ -11,26 +11,24 @@ abstract class BaseTable<T> {
     String cols = "";
 
     columns.forEach((String field, String type) {
-      String _default = defaults[field].toString();
+      String defaultCollumn = defaults[field].toString();
       cols += "$field $type ";
-      if (_default != null) {
-        cols += " DEFAULT $_default";
-      }
+      cols += " DEFAULT $defaultCollumn";
       if ((type == ColumnType.Integer || type == ColumnType.Real) &&
-          _default == null) {
+          defaultCollumn == null) {
         cols += " DEFAULT 0";
       }
       cols += ", ";
     });
     cols = "($cols)".replaceAll(", )", ")");
-    if (primaryKey.length > 0) {
+    if (primaryKey.isNotEmpty) {
       cols = cols.replaceAll(")", ", ${_createPrimaryKey()} )");
     }
     return "CREATE TABLE $tableName $cols";
   }
 
   String _createPrimaryKey() {
-    if (primaryKey.length > 0) {
+    if (primaryKey.isNotEmpty) {
       return 'CONSTRAINT ${this.tableName}_pk PRIMARY KEY (${primaryKey.join(', ')})';
     }
     return '';
@@ -41,7 +39,7 @@ abstract class BaseTable<T> {
   List<String> createIndexes() {
     List<String> queries = [];
 
-    if (indexes.length > 0) {
+    if (indexes.isNotEmpty) {
       indexes.forEach((String index, dynamic fields) {
         String field = fields.toString();
         if (fields is List) {
@@ -57,16 +55,14 @@ abstract class BaseTable<T> {
 
   String addColumn(String columnName) {
     String type = columns[columns].toString();
-    String _default = defaults[columnName].toString();
+    String defaultCollumn = defaults[columnName].toString();
 
     String sql = 'ALTER TABLE ${this.tableName} ADD $columnName $type';
 
-    if (_default != null) {
-      sql += " DEFAULT $_default";
-    }
+    sql += " DEFAULT $defaultCollumn";
 
     if ((type == ColumnType.Integer || type == ColumnType.Real) &&
-        _default == null) {
+        defaultCollumn == null) {
       sql += " DEFAULT 0";
     }
 

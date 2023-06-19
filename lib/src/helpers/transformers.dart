@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:ui';
 
 int dynamicToInt(source) {
   if (source.runtimeType == bool) {
@@ -18,7 +16,7 @@ bool dynamicToBool(dynamic source, {bool nullable = false}) {
   return dynamicToInt(source) != 0;
 }
 
-String? dynamicToString(dynamic? source) {
+String? dynamicToString(dynamic source) {
   if (source != null) {
     return source.toString();
   }

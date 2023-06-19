@@ -3,14 +3,13 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../shared/models/dominio/book/simple_book.dart';
-import '../../shared/models/http/book_api/book_api.dart';
 
 part 'details_controller.g.dart';
 
 class DetailsController = DetailsControllerBase with _$DetailsController;
 
 abstract class DetailsControllerBase with Store {
-  FavoriteRepository _favoriteRepository = Modular.get();
+  final FavoriteRepository _favoriteRepository = Modular.get();
 
   @observable
   bool isFavorite = false;

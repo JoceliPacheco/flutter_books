@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_books/src/core/app_controller.dart';
 import 'package:flutter_books/src/modules/home/home_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -13,7 +11,7 @@ import '../../shared/components/simple_content/simple_content_widget.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -48,21 +46,21 @@ class _HomePageState extends State<HomePage> {
           return SimpleContentContainer(
             expand: true,
             head: _buildhead,
-            child: _buildBody,
             bottom: _buildBottom,
+            child: _buildBody,
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Modular.to.pushNamed('/favorites'),
-        child: Icon(Icons.favorite),
+        child: const Icon(Icons.favorite),
       ),
     );
   }
 
   Widget get _buildBody {
     if (controller.books.isEmpty && !controller.loading) {
-      return EmptyWidget();
+      return const EmptyWidget();
     }
 
     return ListView.builder(
@@ -84,10 +82,10 @@ class _HomePageState extends State<HomePage> {
           controller: textEditingController,
           textInputAction: TextInputAction.search,
           decoration: InputDecoration(
-            border: UnderlineInputBorder(),
+            border: const UnderlineInputBorder(),
             hintText: AppLocalizations.of(context)!.labelSearch,
             suffix: IconButton(
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () {
                 FocusScope.of(context).unfocus();
 
@@ -100,8 +98,8 @@ class _HomePageState extends State<HomePage> {
       );
 
   Widget get _buildBottom => controller.loading
-      ? Padding(
-          padding: const EdgeInsets.all(16.0),
+      ? const Padding(
+          padding: EdgeInsets.all(16.0),
           child: CircularProgressIndicator(),
         )
       : Container();
@@ -118,13 +116,13 @@ class EmptyWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             FontAwesomeIcons.arrowUpLong,
             color: Colors.grey,
           ),
           Text(
             AppLocalizations.of(context)!.noResult,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
             ),
           ),

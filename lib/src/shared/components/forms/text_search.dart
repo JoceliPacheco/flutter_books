@@ -8,7 +8,7 @@ class TextSearch extends StatelessWidget {
     return TextFormField(
       initialValue: 'Input text',
       maxLength: 20,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         icon: Icon(Icons.favorite),
         labelText: 'Label text',
         labelStyle: TextStyle(

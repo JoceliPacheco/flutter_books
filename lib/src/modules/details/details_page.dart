@@ -7,12 +7,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../shared/models/http/book_api/book_api.dart';
 import '../../shared/services/browser/open_browser.dart';
 
 class DetailsPage extends StatefulWidget {
   final SimpleBook book;
-  DetailsPage({
+  const DetailsPage({
     required this.book,
     super.key,
   });
@@ -50,18 +49,18 @@ class _DetailsPageState extends State<DetailsPage> {
         ],
       ),
       body: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: ListView(
           shrinkWrap: true,
           children: [
             imageBookWidget,
             Text(
               widget.book.title,
-              style: TextStyle(color: Colors.blue),
+              style: const TextStyle(color: Colors.blue),
             ),
             Text(
               widget.book.subtitle,
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
             descriptionWidget,
             Container(
@@ -90,7 +89,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   Widget? get buttonBuyWidget => widget.book.buyLink.isNotEmpty
       ? FloatingActionButton(
-          child: Icon(FontAwesomeIcons.cartShopping),
+          child: const Icon(FontAwesomeIcons.cartShopping),
           onPressed: () => OpenBrowser.open(widget.book.buyLink),
         )
       : null;
