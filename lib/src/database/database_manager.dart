@@ -5,6 +5,8 @@ import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
+import '../helpers/transformers.dart';
+
 class DatabaseManager {
   static const int schemaVersion = 3;
 
@@ -117,7 +119,40 @@ class DatabaseManager {
   /// Verifica se existem índices nas tabelas
   /// Recria eles
   _ajustaCriacaoPrimaryKeys(Database db, fromVersion, toVersion) async {
-    //TODO: aqui
+    for (BaseTable table in tables) {
+      try {
+        var columns =
+            await db.rawQuery("PRAGMA table_info(${table.tableName})");
+
+        var pks =
+            columns.where((element) => dynamicToInt(element['pk']) > 0).length;
+
+        List _pks = columns
+            .where((element) => dynamicToInt(element['pk']) > 0)
+            .toList();
+
+        bool need = false;
+
+        /// Tabela não tinha primary key, mas agora tem, recria ela
+        if (table.primaryKey.length != pks) {
+          need = true;
+        }
+
+        /// Tabela mudou pks
+        _pks.forEach((item) {
+          if (table.primaryKey.where((i) => i == item['name']).length <= 0) {
+            need = true;
+          }
+        });
+
+        if (need) {
+          print('Recriando tabela ${table.tableName} por mudanças de PKs');
+          await _recriarTabela(db, table);
+        }
+      } catch (e) {
+        await _recriarTabela(db, table);
+      }
+    }
   }
 
   /// Recria a tabela caso dê problema com indices ou colunas

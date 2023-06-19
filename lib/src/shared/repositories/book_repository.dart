@@ -21,10 +21,10 @@ class BookRepository {
       limit,
     ))
         .then((data) {
-      return BookApi.fromList(data['items']);
+      return BookApi.fromList(data!['items'] ?? []);
     }).catchError(
       (e) {
-        throw new Exception(getMessage(e));
+        throw Exception(getMessage(e));
       },
     );
   }
