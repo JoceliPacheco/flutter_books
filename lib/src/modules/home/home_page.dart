@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   HomeController controller = Modular.get();
+
   TextEditingController textEditingController = TextEditingController();
 
   @override
@@ -39,33 +40,22 @@ class _HomePageState extends State<HomePage> {
           ButtonLanguage('pt'),
           ButtonLanguage('en'),
           ButtonLanguage('es'),
-          IconButton(
-            onPressed: () => Modular.to.pushNamed('/favorites'),
-            icon: Icon(Icons.favorite),
-          )
         ],
       ),
       body: Observer(
         builder: (context) {
           return SimpleContentContainer(
             expand: true,
-            head: TextField(
-              textInputAction: TextInputAction.search,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: AppLocalizations.of(context)!.labelSearch,
-              ),
-              onSubmitted: (value) => controller.search(value),
-            ),
+            head: _buildhead,
             child: _buildBody,
-            bottom: controller.loading
-                ? Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: CircularProgressIndicator(),
-                  )
-                : null,
+            bottom: _buildBottom,
           );
         },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Modular.to.pushNamed('/favorites'),
+        child: Icon(Icons.favorite),
       ),
     );
   }
@@ -73,6 +63,40 @@ class _HomePageState extends State<HomePage> {
   Widget get _buildBody => ListView.builder(
         controller: controller.scroll,
         itemCount: controller.books.length,
-        itemBuilder: (context, index) => CardBook(controller.books[index]),
+        itemBuilder: (context, index) => CardBook(
+          controller.books[index],
+          onTap: () => Modular.to.pushNamed(
+            '/details',
+            arguments: {'book': controller.books[index]},
+          ),
+        ),
       );
+
+  Widget get _buildhead => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: TextField(
+          controller: textEditingController,
+          textInputAction: TextInputAction.search,
+          decoration: InputDecoration(
+            border: UnderlineInputBorder(),
+            hintText: AppLocalizations.of(context)!.labelSearch,
+            suffix: IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                FocusScope.of(context).unfocus();
+
+                controller.search(textEditingController.value.text);
+              },
+            ),
+          ),
+          onSubmitted: (value) => controller.search(value),
+        ),
+      );
+
+  Widget get _buildBottom => controller.loading
+      ? Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: CircularProgressIndicator(),
+        )
+      : Container();
 }

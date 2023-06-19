@@ -20,14 +20,14 @@ abstract class DetailsControllerBase with Store {
     isFavorite = book.isFavorite;
   }
 
-  add(SimpleBook book) async {
+  handleFavorite(SimpleBook book) async {
     isFavorite = !isFavorite;
     book.isFavorite = isFavorite;
 
     if (isFavorite) {
-      await _favoriteRepository.add(book);
+      await _favoriteRepository.insert(book);
     } else {
-      await _favoriteRepository.rm(book.id);
+      await _favoriteRepository.remove(book.id);
     }
   }
 }

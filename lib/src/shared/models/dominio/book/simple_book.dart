@@ -1,3 +1,4 @@
+import 'package:flutter_books/src/helpers/transformers.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'simple_book.g.dart';
@@ -25,7 +26,7 @@ class SimpleBook {
   @JsonKey(name: 'buy')
   String buyLink;
 
-  @JsonKey(ignore: true)
+  @JsonKey(name: 'is_favorite', fromJson: dynamicToBool)
   bool isFavorite = false;
 
   SimpleBook({

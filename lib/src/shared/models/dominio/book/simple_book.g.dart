@@ -14,6 +14,9 @@ SimpleBook _$SimpleBookFromJson(Map<String, dynamic> json) => SimpleBook(
       publisher: json['publisher'] as String? ?? '',
       image: json['image'] as String? ?? '',
       buyLink: json['buy'] as String? ?? '',
+      isFavorite: json['is_favorite'] == null
+          ? false
+          : dynamicToBool(json['is_favorite']),
     );
 
 Map<String, dynamic> _$SimpleBookToJson(SimpleBook instance) =>
@@ -25,4 +28,5 @@ Map<String, dynamic> _$SimpleBookToJson(SimpleBook instance) =>
       'publisher': instance.publisher,
       'image': instance.image,
       'buy': instance.buyLink,
+      'is_favorite': instance.isFavorite,
     };

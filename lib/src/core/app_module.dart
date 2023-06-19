@@ -16,8 +16,6 @@ class AppModule extends Module {
         Bind((i) => AppController()),
         Bind((i) => ApiRequest()),
         Bind((i) => DatabaseManager()),
-
-        //
         Bind((i) => OpenBrowser()),
         Bind((i) => ToastService()),
       ];

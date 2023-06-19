@@ -7,18 +7,18 @@ import '../../models/http/book_api/book_api.dart';
 
 class CardBook extends StatelessWidget {
   final SimpleBook book;
+  final Function onTap;
+
   const CardBook(
     this.book, {
+    required this.onTap,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () => Modular.to.pushNamed(
-        '/details',
-        arguments: {'book': book},
-      ),
+      onTap: () => onTap(),
       dense: true,
       leading: Container(
         padding: EdgeInsets.all(8),

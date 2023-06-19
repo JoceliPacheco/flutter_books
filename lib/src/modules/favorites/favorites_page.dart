@@ -41,6 +41,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
           itemCount: controller.favorites.length,
           itemBuilder: (context, index) => CardBook(
             controller.favorites[index],
+            onTap: () => Modular.to.pushNamed(
+              '/details',
+              arguments: {'book': controller.favorites[index]},
+            ).then((_) {
+              controller.getBooks();
+            }),
           ),
         );
       },

@@ -41,7 +41,7 @@ class _DetailsPageState extends State<DetailsPage> {
             children: [
               Text(widget.book.title),
               TextButton(
-                onPressed: () => controller.add(widget.book),
+                onPressed: () => controller.handleFavorite(widget.book),
                 child: Observer(
                   builder: (context) => Text(controller.isFavorite
                       ? AppLocalizations.of(context)!.rm

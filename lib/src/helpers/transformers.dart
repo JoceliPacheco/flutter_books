@@ -69,10 +69,7 @@ bool? intToBoolNullable(dynamic source) {
   return intToBool(source, nullable: true);
 }
 
-bool? dynamicToBool(dynamic source, {bool nullable = false}) {
-  if (nullable && source == null) {
-    return null;
-  }
+bool dynamicToBool(dynamic source, {bool nullable = false}) {
   if (source.toString() == 'true') {
     return true;
   } else if (source.toString() == 'false') {
