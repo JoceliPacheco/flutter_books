@@ -1,7 +1,7 @@
 // ignore_for_file: overridden_fields
 
-import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
-import 'package:flutter_books/src/shared/models/dominio/table/column_type.dart';
+import 'package:flutter_books/src/database/tables/_base_table.dart';
+import 'package:flutter_books/src/shared/constants/column_type.dart';
 
 class FavoriteTable extends BaseTable {
   @override

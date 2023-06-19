@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_books/src/database/tables/_base_table.dart';
 import 'package:flutter_books/src/database/tables/favorite_table.dart';
-import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:sqflite/sqflite.dart';
 // ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
