@@ -32,7 +32,10 @@ class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         title: Text(AppLocalizations.of(context)!.details),
         actions: [
           IconButton(
@@ -49,13 +52,19 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(16),
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            color: Colors.white),
         child: ListView(
           shrinkWrap: true,
           children: [
             imageBookWidget,
             Text(
               widget.book.title,
-              style: const TextStyle(color: Colors.blue),
+              style: const TextStyle(color: Colors.blueGrey),
             ),
             Text(
               widget.book.subtitle,
@@ -88,6 +97,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
   Widget? get buttonBuyWidget => widget.book.buyLink.isNotEmpty
       ? FloatingActionButton(
+          backgroundColor: Colors.blueGrey,
           child: const Icon(FontAwesomeIcons.cartShopping),
           onPressed: () => OpenBrowser.open(widget.book.buyLink),
         )

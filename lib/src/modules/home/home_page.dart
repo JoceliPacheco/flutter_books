@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.transparent,
         title: Text(AppLocalizations.of(context)!.title),
         actions: [
           ButtonLanguage('pt'),
@@ -62,6 +62,7 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey,
         onPressed: () => Modular.to.pushNamed('/favorites'),
         child: const Icon(Icons.favorite),
       ),
@@ -127,8 +128,9 @@ class EmptyWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(
-            FontAwesomeIcons.arrowUpLong,
+            FontAwesomeIcons.searchengin,
             color: Colors.grey,
+            size: 72,
           ),
           Text(
             AppLocalizations.of(context)!.noResult,

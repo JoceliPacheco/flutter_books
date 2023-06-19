@@ -26,7 +26,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
         title: Text(AppLocalizations.of(context)!.favorites),
       ),
       body: _buildBody,
@@ -74,6 +77,7 @@ class EmptyWidget extends StatelessWidget {
             const Icon(
               FontAwesomeIcons.heartCrack,
               color: Colors.grey,
+              size: 72,
             ),
             Text(
               AppLocalizations.of(context)!.noFavorites,
