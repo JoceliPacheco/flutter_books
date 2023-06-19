@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_books/src/database/tables/favorite_table.dart';
 import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:sqflite/sqflite.dart';
@@ -22,7 +23,9 @@ class DatabaseManager {
   Completer<Database> database = Completer<Database>();
 
   DatabaseManager._internal() {
-    print('Inicializou o banco de dados');
+    if (kDebugMode) {
+      print('Inicializou o banco de dados');
+    }
     _initDatabase().then((Database db) async {
       database.complete(db);
       await db.rawQuery('PRAGMA journal_mode = WAL');
@@ -45,7 +48,9 @@ class DatabaseManager {
   }
 
   _onUpgrade(Database db, fromVersion, toVersion) async {
-    print('Atualizando versões das tabelas');
+    if (kDebugMode) {
+      print('Atualizando versões das tabelas');
+    }
     await _ajustaCriacaoTabelas(db, fromVersion, toVersion);
     await _ajustaCriacaoColunas(db, fromVersion, toVersion);
     await _ajustaCriacaoPrimaryKeys(db, fromVersion, toVersion);
@@ -147,7 +152,9 @@ class DatabaseManager {
         }
 
         if (need) {
-          print('Recriando tabela ${table.tableName} por mudanças de PKs');
+          if (kDebugMode) {
+            print('Recriando tabela ${table.tableName} por mudanças de PKs');
+          }
           await _recriarTabela(db, table);
         }
       } catch (e) {
@@ -164,7 +171,9 @@ class DatabaseManager {
       table
           .createIndexes()
           .forEach((String sql) async => await db.rawQuery(sql));
-    } catch (e) {}
+    } catch (e) {
+      return;
+    }
   }
 
   /// Obtém listagem de todas as tabelas

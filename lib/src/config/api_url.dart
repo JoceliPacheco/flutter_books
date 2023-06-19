@@ -8,6 +8,5 @@ abstract class ApiUrl {
         path:
             '/books/v1/volumes?q=$keyword&key=$token&startIndex=$offset&maxResults=$limit',
         httpMethod: 'GET',
-        token: token,
       );
 }

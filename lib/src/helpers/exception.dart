@@ -19,7 +19,7 @@ String getMessage(error, {String? message}) {
     }
 
     return error?.message ?? 'bad request';
-  } catch (e) {}
-
-  return message ?? 'bad request';
+  } catch (e) {
+    return message ?? 'bad request';
+  }
 }

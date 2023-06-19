@@ -19,7 +19,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.getBooks();
   }
@@ -73,7 +72,7 @@ class EmptyWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
-              FontAwesomeIcons.heartBroken,
+              FontAwesomeIcons.heartCrack,
               color: Colors.grey,
             ),
             Text(

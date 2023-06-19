@@ -25,7 +25,6 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller.init(widget.book);
   }

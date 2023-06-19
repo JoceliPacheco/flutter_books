@@ -15,7 +15,6 @@ abstract class DetailsControllerBase with Store {
   bool isFavorite = false;
 
   init(SimpleBook book) {
-    print('book.isFavorite ${book.isFavorite}');
     isFavorite = book.isFavorite;
   }
 
