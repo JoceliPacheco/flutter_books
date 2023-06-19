@@ -4,6 +4,7 @@ import 'package:flutter_books/src/shared/services/browser/open_browser.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../models/http/book_api/book_api.dart';
+import 'image_book.dart';
 
 class CardBook extends StatelessWidget {
   final SimpleBook book;
@@ -24,7 +25,7 @@ class CardBook extends StatelessWidget {
         padding: EdgeInsets.all(8),
         width: 60,
         child: Center(
-          child: Image.network(book.image),
+          child: ImageBook(book.image),
         ),
       ),
       title: Text(book.title),

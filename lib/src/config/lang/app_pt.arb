@@ -6,5 +6,7 @@
     "add":                  "Adicionar ao favoritos",
     "rm":                   "Remover dos favoritos",
     "withoutConnection":    "Verifique sua conexão",
+    "noResult":             "Sem resultados, realize um nova pesquisa",
+    "noFavorites":          "Sem resultados",
     "lang":                 "Portugues"
 }

@@ -6,5 +6,7 @@
     "add":                  "Add to Favorites",
     "rm":                   "Remove from favorites",
     "withoutConnection":    "check your connection",
+    "noResult":             "No results, perform a new search",
+    "noFavorites":          "No results",
     "lang":                 "English"
 }

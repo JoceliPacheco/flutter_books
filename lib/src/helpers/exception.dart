@@ -18,8 +18,8 @@ String getMessage(error, {String? message}) {
       return error.response!.data["error"].toString();
     }
 
-    return error?.message ?? 'Erro';
+    return error?.message ?? 'bad request';
   } catch (e) {}
 
-  return message ?? 'Erro';
+  return message ?? 'bad request';
 }

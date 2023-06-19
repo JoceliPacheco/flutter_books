@@ -4,6 +4,7 @@ import 'package:flutter_books/src/modules/favorites/favorites_controller.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../shared/components/book/card_book.dart';
 
@@ -30,26 +31,61 @@ class _FavoritesPageState extends State<FavoritesPage> {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.favorites),
       ),
-      body: _buildBody(),
+      body: _buildBody,
     );
   }
 
-  Widget _buildBody() {
+  Widget get _buildBody {
     return Observer(
       builder: (context) {
-        return ListView.builder(
-          itemCount: controller.favorites.length,
-          itemBuilder: (context, index) => CardBook(
-            controller.favorites[index],
-            onTap: () => Modular.to.pushNamed(
-              '/details',
-              arguments: {'book': controller.favorites[index]},
-            ).then((_) {
-              controller.getBooks();
-            }),
+        if (controller.favorites.isEmpty) {
+          return EmptyWidget();
+        }
+        return Container(
+          width: double.infinity,
+          child: ListView.builder(
+            itemCount: controller.favorites.length,
+            itemBuilder: (context, index) => CardBook(
+              controller.favorites[index],
+              onTap: () => Modular.to.pushNamed(
+                '/details',
+                arguments: {'book': controller.favorites[index]},
+              ).then((_) {
+                controller.getBooks();
+              }),
+            ),
           ),
         );
       },
+    );
+  }
+}
+
+class EmptyWidget extends StatelessWidget {
+  const EmptyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              FontAwesomeIcons.heartBroken,
+              color: Colors.grey,
+            ),
+            Text(
+              AppLocalizations.of(context)!.noFavorites,
+              style: TextStyle(
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
