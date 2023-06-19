@@ -32,7 +32,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.blueGrey,
         title: Text(AppLocalizations.of(context)!.title),
         actions: [
           ButtonLanguage('pt'),
@@ -42,11 +45,19 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Observer(
         builder: (context) {
-          return SimpleContentContainer(
-            expand: true,
-            head: _buildhead,
-            bottom: _buildBottom,
-            child: _buildBody,
+          return Container(
+            decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+                color: Colors.white),
+            child: SimpleContentContainer(
+              expand: true,
+              head: _buildhead,
+              bottom: _buildBottom,
+              child: _buildBody,
+            ),
           );
         },
       ),
