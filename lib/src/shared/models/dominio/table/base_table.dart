@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter_books/src/shared/models/dominio/table/column_type.dart';
 
 abstract class BaseTable<T> {
