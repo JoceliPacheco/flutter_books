@@ -82,18 +82,15 @@ class _DetailsPageState extends State<DetailsPage> {
         ),
       );
 
-  Widget get descriptionWidget => Padding(
-        padding: const EdgeInsets.only(top: 16),
-        child: Text(
-          widget.book.description,
-          textAlign: TextAlign.justify,
-          style: const TextStyle(fontSize: 12),
-        ),
+  Widget get descriptionWidget => Text(
+        widget.book.description,
+        textAlign: TextAlign.justify,
+        style: const TextStyle(fontSize: 12),
       );
 
   Widget? get buttonBuyWidget => widget.book.buyLink.isNotEmpty
       ? FloatingActionButton(
-          child: Icon(FontAwesomeIcons.link),
+          child: Icon(FontAwesomeIcons.cartShopping),
           onPressed: () => OpenBrowser.open(widget.book.buyLink),
         )
       : null;

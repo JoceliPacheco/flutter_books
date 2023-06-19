@@ -18,23 +18,26 @@ class CardBook extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: () => onTap(),
-      dense: true,
-      leading: Container(
-        padding: EdgeInsets.all(8),
-        width: 60,
-        child: Center(
-          child: ImageBook(book.image),
+    return Card(
+      color: Color.fromARGB(255, 224, 224, 224),
+      child: ListTile(
+        onTap: () => onTap(),
+        dense: true,
+        leading: Container(
+          padding: EdgeInsets.all(8),
+          width: 60,
+          child: Center(
+            child: ImageBook(book.image),
+          ),
         ),
+        title: Text(book.title),
+        trailing: book.buyLink.isNotEmpty
+            ? IconButton(
+                onPressed: () => OpenBrowser.open(book.buyLink),
+                icon: Icon(Icons.link),
+              )
+            : null,
       ),
-      title: Text(book.title),
-      trailing: book.buyLink.isNotEmpty
-          ? IconButton(
-              onPressed: () => OpenBrowser.open(book.buyLink),
-              icon: Icon(Icons.link),
-            )
-          : null,
     );
   }
 }
