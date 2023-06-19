@@ -14,7 +14,7 @@ abstract class BaseTable<T> {
       String defaultCollumn = defaults[field].toString();
       cols += "$field $type ";
       cols += " DEFAULT $defaultCollumn";
-      if ((type == ColumnType.Integer || type == ColumnType.Real) &&
+      if ((type == ColumnType.typeInteger || type == ColumnType.typeReal) &&
           defaultCollumn == null) {
         cols += " DEFAULT 0";
       }
@@ -61,7 +61,7 @@ abstract class BaseTable<T> {
 
     sql += " DEFAULT $defaultCollumn";
 
-    if ((type == ColumnType.Integer || type == ColumnType.Real) &&
+    if ((type == ColumnType.typeInteger || type == ColumnType.typeReal) &&
         defaultCollumn == null) {
       sql += " DEFAULT 0";
     }

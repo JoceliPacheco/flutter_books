@@ -23,8 +23,6 @@ class ApiRequest {
       },
     );
 
-    print('path: ${api.path}');
-
     try {
       Response response = await dio.request(
         api.url,

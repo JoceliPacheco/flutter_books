@@ -7,14 +7,14 @@ class FavoriteTable extends BaseTable {
 
   @override
   Map<String, String> columns = {
-    'id': ColumnType.Text,
-    'title': ColumnType.Text,
-    'subtitle': ColumnType.Text,
-    'publisher': ColumnType.Text,
-    'description': ColumnType.Text,
-    'image': ColumnType.Text,
-    'buy': ColumnType.Text,
-    'is_favorite': ColumnType.Integer,
+    'id': ColumnType.typeText,
+    'title': ColumnType.typeText,
+    'subtitle': ColumnType.typeText,
+    'publisher': ColumnType.typeText,
+    'description': ColumnType.typeText,
+    'image': ColumnType.typeText,
+    'buy': ColumnType.typeText,
+    'is_favorite': ColumnType.typeInteger,
   };
 
   @override

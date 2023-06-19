@@ -10,7 +10,7 @@ part 'home_controller.g.dart';
 class HomeController = HomeControllerBase with _$HomeController;
 
 abstract class HomeControllerBase with Store {
-  final BookRepository _bookRepository = Modular.get();
+  final BookRepository bookRepository = Modular.get();
   final FindBookService _findBookService = Modular.get();
 
   late ScrollController scroll;
@@ -33,7 +33,6 @@ abstract class HomeControllerBase with Store {
   }
 
   handleScroll() {
-    print('handleScroll');
     if (scroll.position.pixels + tolerancia >=
             scroll.position.maxScrollExtent &&
         !loading) {

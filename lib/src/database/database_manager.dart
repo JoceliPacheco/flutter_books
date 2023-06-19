@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_books/src/database/tables/favorite_table.dart';
 import 'package:flutter_books/src/shared/models/dominio/table/base_table.dart';
 import 'package:sqflite/sqflite.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 import '../helpers/transformers.dart';
@@ -184,8 +185,7 @@ class DatabaseManager {
     Map<String, String> columns = {};
 
     for (var column in columns0) {
-      columns
-          .addAll({column['name'].toString(): column['type'].toString()});
+      columns.addAll({column['name'].toString(): column['type'].toString()});
     }
 
     return columns;

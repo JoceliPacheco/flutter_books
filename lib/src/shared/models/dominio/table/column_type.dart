@@ -1,7 +1,7 @@
 class ColumnType {
-  static const String Text = 'TEXT';
-  static const String Integer = 'INTEGER';
-  static const String Real = 'REAL';
-  static const String Null = 'NULL';
-  static const String Blob = 'BLOB';
+  static const String typeText = 'TEXT';
+  static const String typeInteger = 'INTEGER';
+  static const String typeReal = 'REAL';
+  static const String typeNull = 'NULL';
+  static const String typeBlob = 'BLOB';
 }
